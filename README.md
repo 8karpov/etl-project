@@ -15,7 +15,7 @@
 etl-project/
 ├── .github/
 │ └── workflows/
-│  └── etl.yml # CI/CD пайплайн (GitHub Actions)
+│  └── main.yml # CI/CD пайплайн (GitHub Actions)
 ├── data/
 │ └── trades.csv # Исходные данные
 ├── output/
@@ -71,7 +71,7 @@ python scripts/etl.py \
 - `symbols_total_volume.png` — график торгового объема каждого актива, который есть в БД.
 
 # 2. Как работает CI/CD
-  CI/CD реализован через GitHub Actions в файле `etl.yml`, который находиться в папке `.github/workflows/`
+  CI/CD реализован через GitHub Actions в файле `main.yml`, который находиться в папке `.github/workflows/`
 ## Триггеры:
 - on: push (при каждом пуше) и workflow_dispatch (ручной запуск).
 ## Шаги пайплайна:
