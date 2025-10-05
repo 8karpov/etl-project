@@ -5,7 +5,7 @@
 ## Описание
 Проект демонстрирует простой ETL-процесс:
 - загрузка данных о сделках (CSV);
-- очистка и нормализация данних;
+- очистка и нормализация данных;
 - агрегация по week_start_date, client_type, user_id, symbol;
 - расчёт total_volume, avg_price, trade_count, total_pnl;
 - сохранение базы в agg_result.db , а также экспорт отчёта (топ-3 bronze-клиентов с наибольшим total_volume и total_pnl) и графиков.
