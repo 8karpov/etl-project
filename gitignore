@@ -1,0 +1,19 @@
+# Python служебные
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Виртуальное окружение
+.venv/
+env/
+venv/
+
+# Jupyter служебные файлы
+.ipynb_checkpoints/
+
+# IDE / OS мусор
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

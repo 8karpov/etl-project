@@ -1,0 +1,45 @@
+name: ETL
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run ETL
+        run: |
+          python scripts/etl.py \
+            --data data/trades.csv \
+            --db output/agg_result.db \
+            --table agg_trades_weekly \
+            --top output/top_clients \
+            --chart-weekly output/weekly_volume.png \
+            --chart-symbols output/symbols_total_volume.png \
+            --null-timestamp drop
+
+      - name: Upload artifacts (db, reports, charts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: etl-outputs
+          if-no-files-found: warn
+          path: |
+            output/*.csv
+            output/*.xlsx
+            output/*.png
+            output/*.db
